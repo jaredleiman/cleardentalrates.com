@@ -1,1 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearDentalRates — PPO Fee Schedule Intelligence for Dental Practices</title>
+<meta name="description" content="Stop missing dental insurance fee schedule changes. ClearDentalRates monitors Delta Dental, MetLife, Cigna, and 20+ carriers and delivers a plain-English monthly intelligence report to your inbox.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+SC:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-deep: #0f1829;
+  --gold: #b8963e;
+  --gold-light: #d4af5a;
+  --cream: #faf8f4;
+  --warm-white: #ffffff;
+  --rule: #d4cfc6;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #7a7670;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --serif-sc: 'Cormorant SC', Georgia, serif;
+  --sans: 'Lato', sans-serif;
+  --red: #c0392b;
+  --green: #2e7d52;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--warm-white); color: var(--text-primary); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
+/* ── TOP RULES ── */
+.top-rule { height: 5px; background: var(--navy); }
+.gold-rule { height: 2px; background: var(--gold); }
+
+/* ── MASTHEAD ── */
+.masthead { background: var(--warm-white); border-bottom: 1px solid var(--rule); padding: 0 60px; }
+.masthead-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; max-width: 1280px; margin: 0 auto; }
+.logo-name { font-family: var(--serif-sc); font-size: 28px; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; line-height: 1; }
+.logo-tagline { font-family: var(--sans); font-size: 10px; font-weight: 400; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 3px; }
+nav ul { display: flex; align-items: center; list-style: none; }
+nav ul a { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; padding: 0 22px; height: 80px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.2s; }
+nav ul a:hover { color: var(--navy); }
+.nav-cta { background: var(--navy) !important; color: var(--warm-white) !important; border-left: none !important; }
+.nav-cta:hover { background: var(--navy-deep) !important; color: var(--warm-white) !important; }
+
+/* ── HERO ── */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+.hero-img { position: relative; overflow: hidden; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 50%, var(--navy-deep)); }
+.hero-content { background: var(--navy-deep); padding: 80px 72px 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+.hero-eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+h1 { font-family: var(--serif); font-size: clamp(52px, 5.5vw, 82px); font-weight: 600; line-height: 1.05; color: var(--warm-white); margin-bottom: 28px; letter-spacing: -0.01em; }
+h1 em { font-style: italic; color: var(--gold-light); }
+.hero-deck { font-family: var(--sans); font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.7); max-width: 440px; margin-bottom: 48px; border-left: 2px solid var(--gold); padding-left: 20px; }
+.cta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.btn-primary { background: var(--gold); color: var(--navy-deep); font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 16px 36px; display: inline-block; transition: background 0.2s; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-ghost { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: color 0.2s; }
+.btn-ghost:hover { color: var(--warm-white); }
+.stat-row { display: flex; gap: 0; margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); }
+.stat { flex: 1; padding-right: 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat:not(:first-child) { padding-left: 28px; }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: var(--serif); font-size: 46px; font-weight: 600; color: var(--warm-white); line-height: 1; margin-bottom: 6px; }
+.stat-l { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+
+/* ── ALERT BAND ── */
+.alert-band { background: var(--cream); border-top: 3px solid var(--gold); border-bottom: 1px solid var(--rule); padding: 22px 60px; }
+.alert-band-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: flex-start; gap: 20px; }
+.alert-tag { font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-white); background: var(--navy); padding: 4px 10px; white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+.alert-text { font-family: var(--sans); font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.alert-text strong { color: var(--text-primary); font-weight: 700; }
+
+/* ── SECTIONS ── */
+.section { padding: 88px 60px; border-bottom: 1px solid var(--rule); }
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.sec-head { margin-bottom: 56px; padding-bottom: 20px; border-bottom: 3px solid var(--navy); display: flex; align-items: baseline; gap: 20px; }
+.sec-num { font-family: var(--serif-sc); font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; }
+h2 { font-family: var(--serif); font-size: 40px; font-weight: 600; color: var(--navy); line-height: 1.1; }
+h2 em { font-style: italic; }
+
+/* ── HOW IT WORKS ── */
+.how-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.how-col { display: grid; grid-template-rows: 1fr 1fr; }
+.how-item { padding: 40px 48px 40px 0; border-bottom: 1px solid var(--rule); }
+.how-item:last-child { border-bottom: none; }
+.how-col:last-child .how-item { padding-left: 48px; padding-right: 0; border-left: 1px solid var(--rule); }
+.step-num { font-family: var(--serif-sc); font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.12em; margin-bottom: 14px; }
+.step-title { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
+.step-body { font-family: var(--sans); font-size: 15px; font-weight: 300; color: var(--text-secondary); line-height: 1.8; }
+
+/* ── IMAGE BREAK ── */
+.img-break { height: 500px; overflow: hidden; position: relative; }
+.img-break img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.img-break-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(26,39,68,0.88) 45%, rgba(26,39,68,0.15)); display: flex; align-items: center; }
+.img-break-text { padding: 0 60px; max-width: 620px; }
+.pullquote { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 50px); font-weight: 500; font-style: italic; color: var(--warm-white); line-height: 1.22; margin-bottom: 22px; }
+.pullquote-attr { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
+
+/* ── CARRIERS ── */
+.carriers-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--rule); }
+.c-cell { padding: 28px 32px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.c-cell:nth-child(4n) { border-right: none; }
+.c-cell:nth-last-child(-n+4) { border-bottom: none; }
+.c-dot { width: 6px; height: 6px; background: var(--gold); display: inline-block; margin-right: 8px; vertical-align: middle; }
+.c-name { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.c-sub { font-family: var(--sans); font-size: 11px; color: var(--text-muted); }
+
+/* ── SAMPLE DIGEST ── */
+.digest-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); }
+.digest-left { border-right: 1px solid var(--rule); padding: 48px; }
+.digest-right { background: var(--cream); padding: 48px; }
+.digest-label { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.digest-subject { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+.finding { padding: 20px 0; border-bottom: 1px solid var(--rule); }
+.finding:last-child { border-bottom: none; }
+.f-carrier { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+.f-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.f-badge { font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; }
+.badge-alert { background: #fde8e6; color: var(--red); }
+.badge-ok { background: #e6f4ec; color: var(--green); }
+.f-body { font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; }
+.why-title { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--navy); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+.why-list { list-style: none; }
+.why-list li { font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--text-secondary); padding: 13px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 14px; line-height: 1.6; }
+.why-list li::before { content: '—'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+/* ── PRICING ── */
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); }
+.plan { padding: 56px; border-right: 1px solid var(--rule); }
+.plan:last-child { border-right: none; background: var(--cream); }
+.plan-tier { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.plan-name { font-family: var(--serif); font-size: 36px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.plan-price { font-family: var(--serif); font-size: 76px; font-weight: 600; color: var(--text-primary); line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em; }
+.plan-price sup { font-size: 34px; vertical-align: super; font-weight: 400; }
+.plan-cadence { font-family: var(--sans); font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 32px; }
+.plan-rule { height: 2px; background: var(--navy); margin-bottom: 28px; }
+.plan-features { list-style: none; margin-bottom: 44px; }
+.plan-features li { font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--text-secondary); padding: 11px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 12px; line-height: 1.5; }
+.plan-features li::before { content: '—'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+.plan-btn { display: block; text-align: center; padding: 18px; font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+.btn-navy { background: var(--navy); color: var(--warm-white); }
+.btn-navy:hover { background: var(--navy-deep); }
+.btn-outline { border: 2px solid var(--navy); color: var(--navy); }
+.btn-outline:hover { background: var(--navy); color: var(--warm-white); }
+
+/* ── FINAL CTA ── */
+.final { background: var(--navy); padding: 100px 60px; }
+.final-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 80px; }
+.final-eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+.final h2 { font-family: var(--serif); font-size: clamp(42px, 4.5vw, 66px); font-weight: 600; color: var(--warm-white); line-height: 1.08; margin-bottom: 24px; }
+.final h2 em { font-style: italic; color: var(--gold-light); }
+.final-body { font-family: var(--sans); font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.58); line-height: 1.8; max-width: 520px; }
+.final-right { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; flex-shrink: 0; }
+.final-note { font-family: var(--sans); font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; }
+
+/* ── FOOTER ── */
+/* ── BLOG ── */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); }
+.blog-card { text-decoration: none; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; transition: background 0.2s; }
+.blog-card:nth-child(3n) { border-right: none; }
+.blog-card:nth-last-child(-n+2) { border-bottom: none; }
+.blog-card:hover { background: var(--cream); }
+.blog-img-wrap { height: 180px; overflow: hidden; }
+.blog-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+.blog-card:hover .blog-img-wrap img { transform: scale(1.03); }
+.blog-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.blog-tag { font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.blog-title { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--navy); line-height: 1.25; flex: 1; }
+.blog-meta { font-family: var(--sans); font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; }
+
+.footer-gold { height: 4px; background: var(--gold); }
+footer { background: var(--navy-deep); padding: 40px 60px; }
+.footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: var(--serif-sc); font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 32px; list-style: none; }
+.footer-links a { font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.65); }
+.footer-copy { font-family: var(--sans); font-size: 11px; color: rgba(255,255,255,0.22); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-img { height: 320px; }
+  .hero-content { padding: 56px 32px; }
+  .how-grid { grid-template-columns: 1fr; }
+  .how-col:last-child .how-item { border-left: none; padding-left: 0; }
+  .carriers-grid { grid-template-columns: 1fr 1fr; }
+  .c-cell:nth-child(4n) { border-right: 1px solid var(--rule); }
+  .c-cell:nth-child(2n) { border-right: none; }
+  .digest-grid { grid-template-columns: 1fr; }
+  .digest-left { border-right: none; border-bottom: 1px solid var(--rule); }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .plan { border-right: none; border-bottom: 1px solid var(--rule); }
+  .final-inner { grid-template-columns: 1fr; gap: 40px; }
+  .section { padding: 64px 24px; }
+  .masthead { padding: 0 24px; }
+  nav ul { display: none; }
+  .alert-band { padding: 20px 24px; }
+  .img-break-text { padding: 0 32px; }
+  footer { padding: 32px 24px; }
+  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+  .final { padding: 72px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+<div class="gold-rule"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="logo">
+      <div class="logo-name">ClearDentalRates</div>
+      <div class="logo-tagline">PPO Intelligence for Dental Practices</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#carriers">Carriers</a></li>
+        <li><a href="#digest">Sample Report</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#pricing" class="nav-cta">Subscribe →</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&auto=format&fit=crop&q=80" alt="Dental practice" />
+    <div class="hero-img-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Fee Schedule Intelligence · April 2026</div>
+    <h1>Your carriers<br>changed the<br>rates. Did you<br><em>know?</em></h1>
+    <p class="hero-deck">Twenty insurers quietly update their PPO fee schedules every January. Most dental practices find out months later — if ever. ClearDentalRates monitors every carrier and delivers a plain-English monthly intelligence report to your inbox.</p>
+    <div class="cta-row">
+      <a href="#pricing" class="btn-primary">Start Monitoring</a>
+      <a href="#digest" class="btn-ghost">View sample report</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n">200K+</div><div class="stat-l">US Dental Practices</div></div>
+      <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Carriers Monitored</div></div>
+      <div class="stat"><div class="stat-n">$26K</div><div class="stat-l">Avg Annual Leakage</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ALERT BAND -->
+<div class="alert-band">
+  <div class="alert-band-inner">
+    <span class="alert-tag">April 2026 Alert</span>
+    <p class="alert-text"><strong>Humana Dental PPO reduced D1110 reimbursement by 6.1% effective January 1, 2026.</strong> A practice billing 30 adult cleanings weekly loses approximately $3,200 annually from this change alone — if they don't renegotiate. ClearDentalRates subscribers received this alert on January 3rd.</p>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-num">Section I</span>
+      <h2>How <em>ClearDentalRates</em> Works</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-col">
+        <div class="how-item">
+          <div class="step-num">Step 01</div>
+          <div class="step-title">Subscribe in Two Minutes</div>
+          <div class="step-body">Select your state and the carriers you're credentialed with. No login portal, no software to install. You'll receive your first digest within 30 days — sooner if a major change is detected.</div>
+        </div>
+        <div class="how-item">
+          <div class="step-num">Step 02</div>
+          <div class="step-title">We Monitor Every Carrier</div>
+          <div class="step-body">Our system tracks 20+ carrier portals, state dental board pages, and provider manuals for fee schedule changes, CDT code revisions, and reimbursement rate adjustments — continuously, every day.</div>
+        </div>
+      </div>
+      <div class="how-col">
+        <div class="how-item">
+          <div class="step-num">Step 03</div>
+          <div class="step-title">Receive Your Intelligence Report</div>
+          <div class="step-body">Each month, you receive a plain-English digest: which carriers changed rates, which CDT codes were affected, what it means in real dollars for your highest-volume procedures, and what action to consider.</div>
+        </div>
+        <div class="how-item">
+          <div class="step-num">Step 04</div>
+          <div class="step-title">Negotiate from a Position of Knowledge</div>
+          <div class="step-body">Armed with current, carrier-specific data, you renegotiate contracts confidently, adjust your fee schedule strategy, and stop absorbing rate cuts you never knew happened.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE BREAK -->
+<div class="img-break">
+  <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&auto=format&fit=crop&q=80" alt="Dental practice professional" />
+  <div class="img-break-overlay">
+    <div class="img-break-text">
+      <p class="pullquote">"Delta Dental alone updates fee schedules across 39 states every year. Most practices never read the fine print."</p>
+      <div class="pullquote-attr">ClearDentalRates Research · 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- CARRIERS -->
+<section class="section" id="carriers" style="background: var(--cream);">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-num">Section II</span>
+      <h2>Carriers <em>We Monitor</em></h2>
+    </div>
+    <div class="carriers-grid">
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Delta Dental</div><div class="c-sub">PPO · Premier · DeltaCare USA</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>MetLife</div><div class="c-sub">PDP · PDP Plus · Federal</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Cigna</div><div class="c-sub">DPPO · Network Advantage</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>United Healthcare</div><div class="c-sub">Choice · Choice Plus · Core</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Guardian</div><div class="c-sub">DentalGuard · Preferred PPO</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Humana</div><div class="c-sub">PPO · Value Plus · CompBenefits</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Aetna</div><div class="c-sub">Standard · Premier · DPPO</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Principal Financial</div><div class="c-sub">Dental PPO · Core</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Ameritas</div><div class="c-sub">Dental Premier · Network</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Sun Life</div><div class="c-sub">Dental PPO</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>Lincoln Financial</div><div class="c-sub">Dental PPO · Core</div></div>
+      <div class="c-cell"><div class="c-name"><span class="c-dot"></span>State Medicaid</div><div class="c-sub">All 50 states monitored</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE DIGEST -->
+<section class="section" id="digest">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-num">Section III</span>
+      <h2>Sample <em>Intelligence Report</em></h2>
+    </div>
+    <div class="digest-grid">
+      <div class="digest-left">
+        <div class="digest-label">Monthly Digest · April 1, 2026</div>
+        <div class="digest-subject">April 2026 Fee Schedule Intelligence — 3 Findings for Indiana Practices</div>
+        <div class="finding">
+          <div class="f-carrier">Humana Dental PPO</div>
+          <div class="f-title">D1110 Rate Decrease — 6.1% <span class="f-badge badge-alert">Action Required</span></div>
+          <div class="f-body">Adult prophylaxis reimbursement dropped from $73.50 → $69.00 effective January 1, 2026. At 30 procedures per week, this represents approximately $3,200 in annual revenue reduction. We recommend requesting a fee renegotiation or reviewing network participation ROI before your next contract window.</div>
+        </div>
+        <div class="finding">
+          <div class="f-carrier">Delta Dental PPO · Indiana</div>
+          <div class="f-title">D2750 Crown — Rate Adjustment <span class="f-badge badge-alert">Action Required</span></div>
+          <div class="f-body">Porcelain crown reimbursement decreased 4.2% statewide effective January 2026. This affects your highest revenue-producing procedure code. Review your UCR fee against current Delta PPO allowances before your next credentialing window.</div>
+        </div>
+        <div class="finding">
+          <div class="f-carrier">MetLife · Cigna · Guardian · Aetna</div>
+          <div class="f-title">No Changes Detected <span class="f-badge badge-ok">All Clear</span></div>
+          <div class="f-body">No fee schedule changes detected for your credentialed carriers in Indiana this month. Current contracted rates remain in effect. Next scheduled review: May 1, 2026.</div>
+        </div>
+      </div>
+      <div class="digest-right">
+        <div class="why-title">Why This Report Matters</div>
+        <ul class="why-list">
+          <li>Fee schedules update annually with no proactive notification to most practices</li>
+          <li>Most practices discover rate cuts only during billing audits — months after the fact</li>
+          <li>The renegotiation window is narrow and carrier-specific — most close within 90 days of the change</li>
+          <li>CDT code revisions can affect reimbursement eligibility without changing the fee schedule itself</li>
+          <li>State dental board rule changes can affect participation requirements and audit exposure</li>
+          <li>ClearDentalRates subscribers receive this report on the first of every month, covering all carriers in their subscription</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing" style="background: var(--cream);">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-num">Section IV</span>
+      <h2>Subscription <em>Plans</em></h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-tier">For Solo &amp; Group Practices</div>
+        <div class="plan-name">Practice Monitor</div>
+        <div class="plan-price"><sup>$</sup>147</div>
+        <div class="plan-cadence">per month · cancel anytime</div>
+        <div class="plan-rule"></div>
+        <ul class="plan-features">
+          <li>1 state monitored</li>
+          <li>Up to 6 carriers tracked</li>
+          <li>Monthly plain-English digest</li>
+          <li>Fee schedule change detection</li>
+          <li>CDT code impact summaries</li>
+          <li>Delivered by email — no login required</li>
+        </ul>
+        <a href="https://buy.stripe.com/3cI6oH91rfObfGW9cneIw0c" class="plan-btn btn-outline">Start Practice Monitor →</a>
+      </div>
+      <div class="plan">
+        <div class="plan-tier">For DSOs &amp; Multi-Location Groups</div>
+        <div class="plan-name">DSO Intelligence</div>
+        <div class="plan-price"><sup>$</sup>297</div>
+        <div class="plan-cadence">per month · cancel anytime</div>
+        <div class="plan-rule"></div>
+        <ul class="plan-features">
+          <li>All 50 states monitored</li>
+          <li>All 20+ carriers tracked</li>
+          <li>Monthly digest + urgent alerts</li>
+          <li>State dental board rule changes</li>
+          <li>CDT code revision tracking</li>
+          <li>Provider manual update alerts</li>
+          <li>Up to 10 email recipients</li>
+        </ul>
+        <a href="https://buy.stripe.com/3cI4gz0uV1XlfGWcozeIw0d" class="plan-btn btn-navy">Start DSO Intelligence →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="section" id="blog">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-num">Section V</span>
+      <h2>Intelligence <em>Library</em></h2>
+    </div>
+    <div class="blog-grid">
+      <a href="/blog/delta-dental-fee-schedule-changes-2026.html" class="blog-card">
+        <div class="blog-img-wrap"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&auto=format&fit=crop&q=80" alt="Delta Dental fee schedule changes 2026"></div>
+        <div class="blog-card-body">
+          <div class="blog-tag">Fee Schedule Intelligence</div>
+          <div class="blog-title">Delta Dental Fee Schedule Changes 2026: What Every Dentist Needs to Know</div>
+          <div class="blog-meta">April 2026 · 6 min read</div>
+        </div>
+      </a>
+      <a href="/blog/how-to-read-dental-ppo-fee-schedule.html" class="blog-card">
+        <div class="blog-img-wrap"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&auto=format&fit=crop&q=80" alt="How to read a dental PPO fee schedule"></div>
+        <div class="blog-card-body">
+          <div class="blog-tag">Practice Intelligence</div>
+          <div class="blog-title">How to Read a Dental PPO Fee Schedule: A Practice Owner's Plain-English Guide</div>
+          <div class="blog-meta">April 2026 · 8 min read</div>
+        </div>
+      </a>
+      <a href="/blog/dental-insurance-reimbursement-rates-2026.html" class="blog-card">
+        <div class="blog-img-wrap"><img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&auto=format&fit=crop&q=80" alt="Dental insurance reimbursement rates 2026"></div>
+        <div class="blog-card-body">
+          <div class="blog-tag">Market Intelligence</div>
+          <div class="blog-title">Dental Insurance Reimbursement Rates 2026: What's Changing and Why</div>
+          <div class="blog-meta">April 2026 · 7 min read</div>
+        </div>
+      </a>
+      <a href="/blog/how-to-negotiate-dental-ppo-fees.html" class="blog-card">
+        <div class="blog-img-wrap"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80" alt="How to negotiate dental PPO fees"></div>
+        <div class="blog-card-body">
+          <div class="blog-tag">Practice Strategy</div>
+          <div class="blog-title">How to Negotiate Dental PPO Fees: A Step-by-Step Guide for Practice Owners</div>
+          <div class="blog-meta">April 2026 · 9 min read</div>
+        </div>
+      </a>
+      <a href="/blog/cdt-code-changes-2026.html" class="blog-card">
+        <div class="blog-img-wrap"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&auto=format&fit=crop&q=80" alt="CDT code changes 2026"></div>
+        <div class="blog-card-body">
+          <div class="blog-tag">Billing Intelligence</div>
+          <div class="blog-title">CDT Code Changes 2026: What Every Dental Practice Needs to Know</div>
+          <div class="blog-meta">April 2026 · 7 min read</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-inner">
+    <div>
+      <div class="final-eyebrow">ClearDentalRates · Subscribe Today</div>
+      <h2>Stop finding out<br><em>after</em> the fact.</h2>
+      <p class="final-body">Fee schedules change every January. Provider manuals update without announcement. CDT codes get revised without a press release. Subscribe to ClearDentalRates and know within 30 days of any change that affects your bottom line.</p>
+    </div>
+    <div class="final-right">
+      <a href="#pricing" class="btn-primary">View Plans &amp; Subscribe</a>
+      <span class="final-note">No contracts · Cancel anytime · First report within 30 days</span>
+    </div>
+  </div>
+</section>
+
+<div class="footer-gold"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">ClearDentalRates</div>
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="mailto:hello@cleardentalrates.com">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 ClearDentalRates · Not affiliated with any insurance carrier</div>
+  </div>
+</footer>
+
+</body>
+</html>
