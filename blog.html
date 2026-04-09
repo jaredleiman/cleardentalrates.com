@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dental PPO Intelligence Library — ClearDentalRates</title>
+  <meta name="description" content="Expert guidance on dental PPO fee schedule changes, CDT code updates, carrier rate revisions, and practice intelligence for dental practice owners and DSOs."/>
+  <link rel="canonical" href="https://cleardentalrates.com/blog.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+SC:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:#1a2744;--navy-deep:#0f1829;--gold:#b8963e;--gold-light:#d4af5a;
+      --cream:#faf8f4;--warm-white:#ffffff;--rule:#d4cfc6;
+      --text-primary:#1a1a1a;--text-secondary:#4a4a4a;--text-muted:#7a7670;
+      --serif:'Cormorant Garamond',Georgia,serif;--serif-sc:'Cormorant SC',Georgia,serif;--sans:'Lato',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--warm-white);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+
+    .top-rule{height:5px;background:var(--navy)}
+    .gold-rule{height:2px;background:var(--gold)}
+
+    .masthead{background:var(--warm-white);border-bottom:1px solid var(--rule);padding:0 60px}
+    .masthead-inner{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:1280px;margin:0 auto}
+    .logo-name{font-family:var(--serif-sc);font-size:28px;font-weight:700;color:var(--navy);letter-spacing:0.04em;line-height:1}
+    .logo-tagline{font-family:var(--sans);font-size:10px;font-weight:400;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-top:3px}
+    nav ul{display:flex;align-items:center;list-style:none}
+    nav ul a{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-secondary);padding:0 22px;height:80px;display:flex;align-items:center;border-left:1px solid var(--rule);transition:color 0.2s}
+    nav ul a:hover{color:var(--navy)}
+    .nav-cta{background:var(--navy)!important;color:var(--warm-white)!important;border-left:none!important}
+    .nav-cta:hover{background:var(--navy-deep)!important;color:var(--warm-white)!important}
+
+    .blog-hero{background:var(--navy-deep);padding:88px 60px}
+    .blog-hero-inner{max-width:1280px;margin:0 auto}
+    .hero-eyebrow{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+    .hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--gold)}
+    .blog-hero h1{font-family:var(--serif);font-size:clamp(48px,5vw,80px);font-weight:600;line-height:1.05;color:var(--warm-white);margin-bottom:20px;letter-spacing:-0.01em}
+    .blog-hero h1 em{font-style:italic;color:var(--gold-light)}
+    .blog-hero p{font-family:var(--sans);font-size:16px;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.6);max-width:520px;border-left:2px solid var(--gold);padding-left:20px}
+
+    .blog-main{max-width:1280px;margin:0 auto;padding:80px 60px 100px;display:grid;grid-template-columns:1fr 340px;gap:72px;align-items:start}
+
+    /* SECTION DIVIDERS */
+    .posts-section{margin-bottom:56px}
+    .section-rule{height:3px;background:var(--navy);margin-bottom:0}
+    .section-header{display:flex;align-items:baseline;gap:16px;padding:20px 0 24px;border-bottom:1px solid var(--rule);margin-bottom:0}
+    .section-num{font-family:var(--serif-sc);font-size:13px;font-weight:500;color:var(--gold);letter-spacing:0.1em}
+    .section-title{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--navy);line-height:1.1}
+    .section-title em{font-style:italic}
+
+    .post-list{display:flex;flex-direction:column;gap:0}
+    .post-card{display:grid;grid-template-columns:260px 1fr;gap:0;border-bottom:1px solid var(--rule);transition:background 0.2s}
+    .post-card:hover{background:var(--cream)}
+    .post-img{width:100%;height:190px;object-fit:cover;display:block;filter:brightness(0.88)}
+    .post-body{padding:28px 36px}
+    .post-tag{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+    .post-body h2{font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:10px;letter-spacing:-0.01em}
+    .post-body h2 a:hover{color:var(--gold)}
+    .post-body p{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.8;margin-bottom:14px}
+    .post-meta{font-family:var(--sans);font-size:11px;color:var(--text-muted);letter-spacing:0.06em;display:flex;gap:16px}
+    .read-link{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy);margin-top:14px;display:inline-block;border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color 0.2s}
+    .read-link:hover{color:var(--gold)}
+
+    /* SIDEBAR */
+    .blog-sidebar{position:sticky;top:88px;display:flex;flex-direction:column;gap:0}
+    .sidebar-block{border-top:3px solid var(--navy);padding-top:24px;margin-bottom:40px}
+    .sidebar-label{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+
+    .sub-card{background:var(--navy);padding:36px}
+    .sub-tier{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .sub-name{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--warm-white);margin-bottom:8px}
+    .sub-price{font-family:var(--serif);font-size:60px;font-weight:600;color:var(--warm-white);line-height:1;letter-spacing:-0.02em;margin-bottom:4px}
+    .sub-price sup{font-size:26px;font-weight:400;vertical-align:super}
+    .sub-cadence{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.06em;margin-bottom:24px}
+    .sub-rule{height:2px;background:var(--gold);margin-bottom:20px}
+    .sub-features{list-style:none;margin-bottom:28px}
+    .sub-features li{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(255,255,255,0.75);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;gap:12px;line-height:1.5}
+    .sub-features li::before{content:'—';color:var(--gold);font-weight:700;flex-shrink:0}
+    .sub-btn{display:block;text-align:center;padding:16px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--navy-deep);transition:background 0.2s}
+    .sub-btn:hover{background:var(--gold-light)}
+
+    .topics-list{list-style:none}
+    .topics-list li a{display:flex;align-items:center;justify-content:space-between;padding:13px 0;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);border-bottom:1px solid var(--rule);transition:color 0.2s}
+    .topics-list li:last-child a{border-bottom:none}
+    .topics-list li a:hover{color:var(--navy)}
+    .topic-arrow{color:var(--gold)}
+
+    .final{background:var(--navy);padding:80px 60px}
+    .final-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:80px}
+    .final-eyebrow{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+    .final h2{font-family:var(--serif);font-size:clamp(40px,4vw,64px);font-weight:600;color:var(--warm-white);line-height:1.08;margin-bottom:20px}
+    .final h2 em{font-style:italic;color:var(--gold-light)}
+    .final-body{font-family:var(--sans);font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.8;max-width:500px}
+    .final-right{display:flex;flex-direction:column;align-items:flex-start;gap:14px;flex-shrink:0}
+    .btn-primary{background:var(--gold);color:var(--navy-deep);font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:background 0.2s}
+    .btn-primary:hover{background:var(--gold-light)}
+    .final-note{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:0.06em}
+
+    .footer-gold{height:4px;background:var(--gold)}
+    footer{background:var(--navy-deep);padding:40px 60px}
+    .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .footer-logo{font-family:var(--serif-sc);font-size:20px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.04em}
+    .footer-links{display:flex;gap:32px;list-style:none}
+    .footer-links a{font-family:var(--sans);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+    .footer-links a:hover{color:rgba(255,255,255,0.65)}
+    .footer-copy{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.22)}
+
+    @media(max-width:960px){.blog-main{grid-template-columns:1fr;padding:56px 24px 80px}.blog-sidebar{display:none}.post-card{grid-template-columns:1fr}.post-img{height:200px}.masthead{padding:0 24px}nav ul{display:none}.blog-hero{padding:64px 24px}.final{padding:64px 24px}.final-inner{grid-template-columns:1fr;gap:40px}.footer-inner{flex-direction:column;gap:20px;text-align:center}footer{padding:32px 24px}}
+  </style>
+</head>
+<body>
+<div class="top-rule"></div>
+<div class="gold-rule"></div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="logo">
+      <div class="logo-name">ClearDentalRates</div>
+      <div class="logo-tagline">PPO Intelligence for Dental Practices</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/#how">How It Works</a></li>
+        <li><a href="/#carriers">Carriers</a></li>
+        <li><a href="/#digest">Sample Report</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/blog.html">Intelligence Library</a></li>
+        <li><a href="/#pricing" class="nav-cta">Subscribe →</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="hero-eyebrow">Intelligence Library</div>
+    <h1>Dental PPO Intelligence<br/><em>for Practice Owners</em></h1>
+    <p>Plain-English guidance on fee schedule changes, CDT code revisions, carrier rate adjustments, and practice strategy — written for dentists and DSO operators who don't have time for fine print.</p>
+  </div>
+</div>
+
+<div class="blog-main">
+  <div>
+
+    <!-- BATCH 2 — NEW POSTS -->
+    <div class="posts-section">
+      <div class="section-rule"></div>
+      <div class="section-header">
+        <span class="section-num">Latest</span>
+        <div class="section-title">New <em>Intelligence</em></div>
+      </div>
+      <div class="post-list">
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=520&q=80&auto=format&fit=crop" alt="Humana dental PPO fee schedule 2026" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Fee Schedule Intelligence</span>
+            <h2><a href="/blog/humana-dental-ppo-fee-schedule-2026.html">Humana Dental PPO Fee Schedule 2026: What Changed and What Practices Need to Do</a></h2>
+            <p>Humana cut D1110 reimbursement 6.1% effective January 2026 — one of the largest single-code cuts from any major carrier this year. Here's the full picture and how to respond.</p>
+            <div class="post-meta"><span>April 2026</span><span>7 min read</span></div>
+            <a href="/blog/humana-dental-ppo-fee-schedule-2026.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=520&q=80&auto=format&fit=crop" alt="Is dental PPO participation worth it" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Practice Strategy</span>
+            <h2><a href="/blog/dental-ppo-participation-worth-it.html">Is Dental PPO Participation Worth It? How to Run the Numbers for Your Practice</a></h2>
+            <p>Every PPO contract means accepting write-offs on every procedure. Most practices have never actually done the math on whether the volume justifies it. Here's how.</p>
+            <div class="post-meta"><span>April 2026</span><span>9 min read</span></div>
+            <a href="/blog/dental-ppo-participation-worth-it.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=520&q=80&auto=format&fit=crop" alt="MetLife dental fee schedule 2026" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Fee Schedule Intelligence</span>
+            <h2><a href="/blog/metlife-dental-fee-schedule-2026.html">MetLife Dental Fee Schedule 2026: Rate Changes, CDT Code Updates, and What to Do</a></h2>
+            <p>MetLife updated PDP and PDP Plus schedules effective January 2026. D1110 took cuts in both networks while D4341 improved. Here's what changed and how to request a review.</p>
+            <div class="post-meta"><span>April 2026</span><span>8 min read</span></div>
+            <a href="/blog/metlife-dental-fee-schedule-2026.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=520&q=80&auto=format&fit=crop" alt="Dental fee schedule negotiation window calendar" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Practice Strategy</span>
+            <h2><a href="/blog/dental-fee-schedule-negotiation-window.html">Dental Fee Schedule Negotiation Windows: When to Request a Rate Review for Every Major Carrier</a></h2>
+            <p>Every carrier has a specific window when renegotiations are processed. Miss it and you wait another year. Here's the complete negotiation calendar for Delta, MetLife, Cigna, Humana, and more.</p>
+            <div class="post-meta"><span>April 2026</span><span>8 min read</span></div>
+            <a href="/blog/dental-fee-schedule-negotiation-window.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=520&q=80&auto=format&fit=crop" alt="Dental practice insurance revenue leakage" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Market Intelligence</span>
+            <h2><a href="/blog/dental-practice-insurance-revenue-leakage.html">Dental Practice Insurance Revenue Leakage: Where the Money Goes and How to Stop It</a></h2>
+            <p>The average dental practice loses $26,000 annually to preventable revenue leakage. Here's where it goes — fee schedule erosion, billing errors, missed codes, uncollected balances — and how to stop it.</p>
+            <div class="post-meta"><span>April 2026</span><span>9 min read</span></div>
+            <a href="/blog/dental-practice-insurance-revenue-leakage.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- BATCH 1 — ORIGINAL POSTS -->
+    <div class="posts-section">
+      <div class="section-rule"></div>
+      <div class="section-header">
+        <span class="section-num">Foundations</span>
+        <div class="section-title">Core <em>Intelligence</em></div>
+      </div>
+      <div class="post-list">
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=520&q=80&auto=format&fit=crop" alt="Delta Dental fee schedule changes 2026" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Fee Schedule Intelligence</span>
+            <h2><a href="/blog/delta-dental-fee-schedule-changes-2026.html">Delta Dental Fee Schedule Changes 2026: What Every Dentist Needs to Know</a></h2>
+            <p>Delta updates PPO fee schedules across 39 states every January with minimal notice. Here's what changed in 2026, which codes were affected, and what to do before your next negotiation window closes.</p>
+            <div class="post-meta"><span>April 2026</span><span>6 min read</span></div>
+            <a href="/blog/delta-dental-fee-schedule-changes-2026.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=520&q=80&auto=format&fit=crop" alt="How to read a dental PPO fee schedule" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Practice Intelligence</span>
+            <h2><a href="/blog/how-to-read-dental-ppo-fee-schedule.html">How to Read a Dental PPO Fee Schedule: A Practice Owner's Plain-English Guide</a></h2>
+            <p>Most dentists never actually read their PPO fee schedule agreements. Here's a practical guide to understanding UCR fees, tables of allowances, and the fine print that costs practices thousands annually.</p>
+            <div class="post-meta"><span>April 2026</span><span>8 min read</span></div>
+            <a href="/blog/how-to-read-dental-ppo-fee-schedule.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=520&q=80&auto=format&fit=crop" alt="Dental insurance reimbursement rates 2026" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Market Intelligence</span>
+            <h2><a href="/blog/dental-insurance-reimbursement-rates-2026.html">Dental Insurance Reimbursement Rates 2026: What's Changing and Why</a></h2>
+            <p>Reimbursement rates across major carriers shifted in 2026. Some cut rates on high-volume codes while others adjusted upward in specific states. Here's the full picture.</p>
+            <div class="post-meta"><span>April 2026</span><span>7 min read</span></div>
+            <a href="/blog/dental-insurance-reimbursement-rates-2026.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=520&q=80&auto=format&fit=crop" alt="How to negotiate dental PPO fees" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Practice Strategy</span>
+            <h2><a href="/blog/how-to-negotiate-dental-ppo-fees.html">How to Negotiate Dental PPO Fees: A Step-by-Step Guide for Practice Owners</a></h2>
+            <p>Most practices accept the fee schedule they're given and never renegotiate. Here's exactly how to request a fee review, what data to bring, and when the windows open for each major carrier.</p>
+            <div class="post-meta"><span>April 2026</span><span>9 min read</span></div>
+            <a href="/blog/how-to-negotiate-dental-ppo-fees.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=520&q=80&auto=format&fit=crop" alt="CDT code changes 2026" class="post-img"/>
+          <div class="post-body">
+            <span class="post-tag">Billing Intelligence</span>
+            <h2><a href="/blog/cdt-code-changes-2026.html">CDT Code Changes 2026: What Every Dental Practice Needs to Know</a></h2>
+            <p>The ADA releases CDT code updates each year affecting billing eligibility and reimbursement. Here's a plain-English breakdown of what changed in 2026 and how to update your billing protocols.</p>
+            <div class="post-meta"><span>April 2026</span><span>7 min read</span></div>
+            <a href="/blog/cdt-code-changes-2026.html" class="read-link">Read article →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+
+  <aside class="blog-sidebar">
+    <div class="sidebar-block">
+      <div class="sidebar-label">Subscribe</div>
+      <div class="sub-card">
+        <div class="sub-tier">For Solo &amp; Group Practices</div>
+        <div class="sub-name">Practice Monitor</div>
+        <div class="sub-price"><sup>$</sup>147</div>
+        <div class="sub-cadence">per month · cancel anytime</div>
+        <div class="sub-rule"></div>
+        <ul class="sub-features">
+          <li>1 state monitored</li>
+          <li>Up to 6 carriers tracked</li>
+          <li>Monthly plain-English digest</li>
+          <li>Fee schedule change detection</li>
+          <li>Renegotiation window alerts</li>
+          <li>CDT code impact summaries</li>
+        </ul>
+        <a href="/#pricing" class="sub-btn">Start Practice Monitor →</a>
+      </div>
+    </div>
+
+    <div class="sidebar-block">
+      <div class="sidebar-label">Browse Topics</div>
+      <ul class="topics-list">
+        <li><a href="/blog/delta-dental-fee-schedule-changes-2026.html">Fee Schedule Intelligence <span class="topic-arrow">→</span></a></li>
+        <li><a href="/blog/how-to-negotiate-dental-ppo-fees.html">Practice Strategy <span class="topic-arrow">→</span></a></li>
+        <li><a href="/blog/dental-insurance-reimbursement-rates-2026.html">Market Intelligence <span class="topic-arrow">→</span></a></li>
+        <li><a href="/blog/cdt-code-changes-2026.html">Billing Intelligence <span class="topic-arrow">→</span></a></li>
+        <li><a href="/blog/how-to-read-dental-ppo-fee-schedule.html">Practice Intelligence <span class="topic-arrow">→</span></a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<section class="final">
+  <div class="final-inner">
+    <div>
+      <div class="final-eyebrow">ClearDentalRates · Subscribe Today</div>
+      <h2>Stop finding out<br/><em>after</em> the fact.</h2>
+      <p class="final-body">Fee schedules change every January. Provider manuals update without announcement. CDT codes get revised without a press release. Subscribe and know within 30 days of any change that affects your bottom line.</p>
+    </div>
+    <div class="final-right">
+      <a href="/#pricing" class="btn-primary">View Plans &amp; Subscribe</a>
+      <span class="final-note">No contracts · Cancel anytime · First report within 30 days</span>
+    </div>
+  </div>
+</section>
+
+<div class="footer-gold"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">ClearDentalRates</div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog.html">Intelligence Library</a></li>
+      <li><a href="/#pricing">Subscribe</a></li>
+      <li><a href="mailto:hello@cleardentalrates.com">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 ClearDentalRates · Not affiliated with any insurance carrier</div>
+  </div>
+</footer>
+</body>
+</html>
