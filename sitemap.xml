@@ -2,148 +2,158 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cleardentalrates.com/</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://cleardentalrates.com/blog.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Original April 9 blog posts -->
-  <url>
-    <loc>https://cleardentalrates.com/blog/delta-dental-fee-schedule-changes-2026.html</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/how-to-read-dental-ppo-fee-schedule.html</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cleardentalrates.com/blog/dental-insurance-reimbursement-rates-2026.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://cleardentalrates.com/blog/aetna-dental-ppo-fee-schedule-2026/</loc>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/how-to-negotiate-dental-ppo-fees.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://cleardentalrates.com/blog/ucr-vs-contracted-fee/</loc>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/cdt-code-changes-2026.html</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Second batch (Humana, MetLife, negotiation window, PPO participation, revenue leakage) -->
-  <url>
-    <loc>https://cleardentalrates.com/blog/humana-dental-ppo-fee-schedule-2026.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://cleardentalrates.com/blog/humana-dental-ppo-fee-schedule-2026/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/metlife-dental-fee-schedule-2026.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://cleardentalrates.com/blog/metlife-dental-fee-schedule-2026/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/dental-fee-schedule-negotiation-window.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://cleardentalrates.com/blog/delta-dental-fee-schedule-changes-2026/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/dental-ppo-participation-worth-it.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://cleardentalrates.com/blog/cdt-code-changes-2026/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/dental-practice-insurance-revenue-leakage.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://cleardentalrates.com/blog/dental-insurance-reimbursement-rates-2026/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- AI dental estimates post (folder structure) -->
   <url>
-    <loc>https://cleardentalrates.com/blog/ai-dental-estimates-overtreatment-coding/</loc>
-    <lastmod>2026-04-20</lastmod>
+    <loc>https://cleardentalrates.com/blog/dental-fee-schedule-negotiation-window/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 10 new Ahrefs-driven CDT code posts (April 23) -->
   <url>
-    <loc>https://cleardentalrates.com/blog/d2740-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://cleardentalrates.com/blog/dental-ppo-participation-worth-it/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/d7210-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://cleardentalrates.com/blog/dental-practice-insurance-revenue-leakage/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/d0120-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://cleardentalrates.com/blog/how-to-negotiate-dental-ppo-fees/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/d2950-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://cleardentalrates.com/blog/how-to-read-dental-ppo-fee-schedule/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cleardentalrates.com/blog/d4341-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://cleardentalrates.com/blog/dental-procedure-code-lookup/</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cleardentalrates.com/blog/d1110-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cleardentalrates.com/blog/d0150-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cleardentalrates.com/blog/d2391-d2392-composite-fillings/</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cleardentalrates.com/blog/d6010-dental-code/</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cleardentalrates.com/blog/dental-procedure-codes-lookup/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d0120-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d0150-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d1110-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d2391-d2392-composite-fillings/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d2740-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d2950-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d4341-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d6010-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/d7210-dental-code/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleardentalrates.com/blog/ai-dental-estimates-overtreatment-coding/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
