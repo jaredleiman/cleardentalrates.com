@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UCR vs. Contracted Fee: What Dental Practices Are Actually Getting Paid</title>
+  <meta name="description" content="The gap between your UCR fee and what insurance carriers actually pay is the single biggest driver of revenue leakage in dental practices. Here's what UCR and contracted fees mean and how to track the spread."/>
+  <link rel="canonical" href="https://cleardentalrates.com/blog/ucr-vs-contracted-fee/"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+SC:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--navy:#1a2744;--navy-deep:#0f1829;--gold:#b8963e;--gold-light:#d4af5a;--cream:#faf8f4;--warm-white:#ffffff;--rule:#d4cfc6;--text-primary:#1a1a1a;--text-secondary:#4a4a4a;--text-muted:#7a7670;--serif:'Cormorant Garamond',Georgia,serif;--serif-sc:'Cormorant SC',Georgia,serif;--sans:'Lato',sans-serif;--red:#c0392b;--green:#2e7d52;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--warm-white);color:var(--text-primary);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    .top-rule{height:5px;background:var(--navy)}
+    .gold-rule{height:2px;background:var(--gold)}
+    .masthead{background:var(--warm-white);border-bottom:1px solid var(--rule);padding:0 60px}
+    .masthead-inner{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:1280px;margin:0 auto}
+    .logo-name{font-family:var(--serif-sc);font-size:28px;font-weight:700;color:var(--navy);letter-spacing:0.04em;line-height:1}
+    .logo-tagline{font-family:var(--sans);font-size:10px;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-top:3px}
+    nav ul{display:flex;align-items:center;list-style:none}
+    nav ul a{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-secondary);padding:0 22px;height:80px;display:flex;align-items:center;border-left:1px solid var(--rule);transition:color 0.2s}
+    nav ul a:hover{color:var(--navy)}
+    .nav-cta{background:var(--navy)!important;color:var(--warm-white)!important;border-left:none!important}
+
+    .post-hero{background:var(--navy-deep);padding:80px 60px 0}
+    .post-hero-inner{max-width:860px;margin:0 auto;padding-bottom:56px}
+    .breadcrumb{font-family:var(--sans);font-size:11px;letter-spacing:0.08em;color:rgba(255,255,255,0.35);margin-bottom:28px}
+    .breadcrumb a{color:rgba(255,255,255,0.45)}
+    .breadcrumb a:hover{color:var(--gold-light)}
+    .breadcrumb span{margin:0 8px}
+    .post-tag{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:block}
+    .post-hero h1{font-family:var(--serif);font-size:clamp(36px,4.5vw,62px);font-weight:600;color:var(--warm-white);line-height:1.08;margin-bottom:22px;letter-spacing:-0.01em}
+    .post-meta{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.06em;display:flex;gap:20px}
+    .hero-img-wrap{max-width:860px;margin:0 auto}
+    .hero-img-wrap img{width:100%;height:400px;object-fit:cover;display:block;filter:brightness(0.75)saturate(0.85)}
+
+    .article-wrap{max-width:860px;margin:0 auto;padding:64px 60px 100px;display:grid;grid-template-columns:1fr 260px;gap:60px;align-items:start}
+    .post-lead{font-family:var(--serif);font-size:1.25rem;font-weight:400;line-height:1.65;color:var(--text-secondary);margin-bottom:32px;border-left:2px solid var(--gold);padding-left:20px}
+    .article-body h2{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--navy);margin:48px 0 18px;line-height:1.1;padding-top:48px;border-top:1px solid var(--rule)}
+    .article-body h2:first-child{margin-top:0;padding-top:0;border-top:none}
+    .article-body h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--navy);margin:28px 0 12px}
+    .article-body p{font-family:var(--sans);font-size:15px;font-weight:300;color:var(--text-secondary);line-height:1.85;margin-bottom:18px}
+    .article-body ul,.article-body ol{padding-left:20px;margin-bottom:18px}
+    .article-body li{font-family:var(--sans);font-size:15px;font-weight:300;color:var(--text-secondary);line-height:1.8;margin-bottom:8px}
+    .article-body strong{color:var(--text-primary);font-weight:700}
+
+    .rate-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:14px}
+    .rate-table th{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);text-align:left;padding:10px 14px;border-bottom:2px solid var(--navy);background:var(--cream)}
+    .rate-table td{padding:12px 14px;border-bottom:1px solid var(--rule);color:var(--text-secondary);font-weight:300}
+    .rate-table tr:hover td{background:var(--cream)}
+    .cdt{font-family:'Courier New',monospace;font-weight:700;color:var(--navy)}
+    .rate-down{color:var(--red);font-weight:700}
+    .rate-up{color:var(--green);font-weight:700}
+
+    .alert-callout{background:var(--cream);border-top:3px solid var(--gold);border-bottom:1px solid var(--rule);padding:22px 28px;margin:28px 0}
+    .alert-callout-label{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .alert-callout p{font-family:var(--sans);font-size:14px;font-weight:300;color:var(--text-secondary);margin:0;line-height:1.75}
+
+    .sidebar{position:sticky;top:88px}
+    .sidebar-rule{height:3px;background:var(--navy);margin-bottom:22px}
+    .sidebar-label{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .sub-mini{background:var(--navy);padding:28px}
+    .sub-mini-tier{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .sub-mini-price{font-family:var(--serif);font-size:52px;font-weight:600;color:var(--warm-white);line-height:1;letter-spacing:-0.02em;margin-bottom:4px}
+    .sub-mini-price sup{font-size:22px;font-weight:400;vertical-align:super}
+    .sub-mini-cadence{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.38);margin-bottom:20px;display:block}
+    .sub-mini-rule{height:2px;background:var(--gold);margin-bottom:18px}
+    .sub-mini-features{list-style:none;margin-bottom:22px}
+    .sub-mini-features li{font-family:var(--sans);font-size:12px;font-weight:300;color:rgba(255,255,255,0.7);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;gap:10px;line-height:1.5}
+    .sub-mini-features li::before{content:'—';color:var(--gold);font-weight:700;flex-shrink:0}
+    .sub-mini-btn{display:block;text-align:center;padding:14px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--navy-deep);transition:background 0.2s}
+    .sub-mini-btn:hover{background:var(--gold-light)}
+
+    .related{max-width:860px;margin:0 auto;padding:0 60px 80px}
+    .related-rule{height:3px;background:var(--navy);margin-bottom:32px}
+    .related-head{font-family:var(--serif);font-size:1.8rem;font-weight:600;color:var(--navy);margin-bottom:28px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule)}
+    .related-card{padding:24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background 0.2s}
+    .related-card:nth-child(2n){border-right:none}
+    .related-card:nth-last-child(-n+2){border-bottom:none}
+    .related-card:hover{background:var(--cream)}
+    .related-tag{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+    .related-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--navy);line-height:1.25;margin-bottom:8px}
+    .related-card h3 a:hover{color:var(--gold)}
+    .related-card p{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.65}
+
+    .final{background:var(--navy);padding:80px 60px}
+    .final-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:80px}
+    .final-eyebrow{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+    .final h2{font-family:var(--serif);font-size:clamp(38px,4vw,60px);font-weight:600;color:var(--warm-white);line-height:1.1;margin-bottom:18px}
+    .final h2 em{font-style:italic;color:var(--gold-light)}
+    .final-body{font-family:var(--sans);font-size:15px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.8;max-width:480px}
+    .final-right{display:flex;flex-direction:column;align-items:flex-start;gap:14px;flex-shrink:0}
+    .btn-primary{background:var(--gold);color:var(--navy-deep);font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:background 0.2s}
+    .btn-primary:hover{background:var(--gold-light)}
+    .final-note{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+    .footer-gold{height:4px;background:var(--gold)}
+    footer{background:var(--navy-deep);padding:40px 60px}
+    .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .footer-logo{font-family:var(--serif-sc);font-size:20px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.04em}
+    .footer-links{display:flex;gap:32px;list-style:none}
+    .footer-links a{font-family:var(--sans);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+    .footer-links a:hover{color:rgba(255,255,255,0.65)}
+    .footer-copy{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.22)}
+
+    @media(max-width:960px){.article-wrap{grid-template-columns:1fr;padding:48px 24px 80px}.sidebar{display:none}.masthead{padding:0 24px}nav ul{display:none}.post-hero{padding:64px 24px 0}.related{padding:0 24px 60px}.final{padding:64px 24px}.final-inner{grid-template-columns:1fr;gap:40px}.footer-inner{flex-direction:column;gap:20px}footer{padding:32px 24px}}
+  </style>
+</head>
+<body>
+<div class="top-rule"></div>
+<div class="gold-rule"></div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="logo"><div class="logo-name">ClearDentalRates</div><div class="logo-tagline">PPO Intelligence for Dental Practices</div></div>
+    <nav><ul>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/#carriers">Carriers</a></li>
+      <li><a href="/#digest">Sample Report</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/blog.html">Intelligence Library</a></li>
+      <li><a href="/#pricing" class="nav-cta">Subscribe →</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/blog.html">Intelligence Library</a><span>›</span>Practice Strategy</div>
+    <span class="post-tag">Practice Strategy</span>
+    <h1>UCR vs. Contracted Fee: What Dental Practices Are Actually Getting Paid</h1>
+    <div class="post-meta"><span>May 2026</span><span>8 min read</span><span>ClearDentalRates.com</span></div>
+  </div>
+</div>
+<div class="hero-img-wrap">
+  <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=1200&q=80&auto=format&fit=crop" alt="Dental practice analyzing UCR fees vs contracted PPO rates"/>
+</div>
+
+<div class="article-wrap">
+  <div class="article-body">
+    <p class="post-lead">Most dental practices know their UCR fees, and most know their contracted PPO rates. Surprisingly few have ever calculated the spread between the two — the percentage of their full fee that's being written off every time a PPO patient walks in. That spread, multiplied across thousands of annual procedures, is the single largest revenue variable in the practice that nobody is actively managing.</p>
+
+    <h2>What UCR Actually Means</h2>
+    <p>UCR stands for "usual, customary, and reasonable." Despite the precise-sounding name, it's a fluid concept rather than a strict definition. A practice's UCR fee is the amount it charges for a given procedure when no insurance contract or fee schedule is in effect — the rate billed to a self-pay patient or used as the baseline before any contractual write-off is applied.</p>
+    <p>UCR is typically set by the practice based on a combination of regional market data, overhead costs, and competitive positioning. A general practice in a high-cost-of-living urban market will set its UCR for D2740 (porcelain crown) significantly higher than a rural practice in the same state, even though both are billing the same procedure code.</p>
+
+    <div class="alert-callout">
+      <div class="alert-callout-label">Common Misconception</div>
+      <p>UCR is not the same as the "reasonable and customary" amount that some carriers reference in their out-of-network calculations. Carrier R&amp;C amounts are calculated using the carrier's own claim data and percentile thresholds — they're often substantially lower than a practice's actual UCR. The two concepts share a name but operate independently.</p>
+    </div>
+
+    <h2>What Contracted Fee Actually Means</h2>
+    <p>A contracted fee is the rate a practice has agreed to accept from a specific insurance carrier as full payment for a covered procedure. When a practice signs a PPO participation agreement, it agrees to a fee schedule — a code-by-code table of contracted rates — in exchange for being listed in the carrier's in-network directory and receiving the patient flow that comes with that listing.</p>
+    <p>The contracted fee is almost always lower than the practice's UCR. The difference between them is the contractual write-off, which appears on every PPO claim as the amount the practice is required to forgive in exchange for in-network participation. A practice with a UCR of $1,200 for D2740 and a contracted Aetna rate of $999 is writing off $201 every time it places a porcelain crown on an Aetna PPO patient.</p>
+
+    <h2>The UCR-to-Contracted Spread</h2>
+    <p>The percentage difference between UCR and contracted fee — the spread — is the single most important number for understanding PPO economics. A small spread means the practice is getting close to its full fee on PPO claims. A large spread means the practice is absorbing significant write-offs on every PPO patient.</p>
+    <p>National benchmarks for the spread vary by procedure category and carrier:</p>
+
+    <table class="rate-table">
+      <thead><tr><th>Procedure Category</th><th>Typical UCR Spread (PPO Avg)</th><th>What It Means</th></tr></thead>
+      <tbody>
+        <tr><td>Diagnostic (D0120, D0150)</td><td>15% to 35%</td><td>Lower spread — paid close to UCR</td></tr>
+        <tr><td>Preventive (D1110, D1120)</td><td>20% to 40%</td><td>Moderate spread</td></tr>
+        <tr><td>Basic Restorative (D2391-D2392)</td><td>25% to 45%</td><td>Higher spread on composites</td></tr>
+        <tr><td>Major Restorative (D2740, D2750)</td><td>30% to 50%</td><td>Highest spread — largest write-offs</td></tr>
+        <tr><td>Periodontal (D4341, D4910)</td><td>25% to 40%</td><td>Variable by carrier</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Why the Spread Compounds</h2>
+    <p>The compounding effect of UCR-to-contracted spread is what makes it the dominant revenue variable in most practices. Consider the math for a single high-volume code: if a practice bills 30 D1110s weekly, with a UCR of $95 and an average PPO contracted rate of $68, the per-procedure write-off is $27. Annualized at 50 weeks, that's $40,500 in write-offs from a single code.</p>
+    <p>Now extend the calculation across the practice's full code mix. A general practice billing 8 different high-volume codes on PPO patients can easily be writing off $200,000 to $400,000 annually before the first dollar of profit is calculated. The spread isn't a small line-item adjustment — it's often larger than the practice's net profit.</p>
+
+    <h2>How the Spread Changes Year to Year</h2>
+    <p>Two forces move the spread in opposite directions. UCR fees typically rise modestly each year, reflecting cost-of-living adjustments, supply costs, and labor pressure. Contracted PPO fees, by contrast, often stay flat or decrease — particularly in markets where carriers are aggressively managing utilization or restructuring fee schedules.</p>
+    <p>The combined effect is that the UCR-to-contracted spread tends to widen each year unless the practice actively renegotiates. A practice that hasn't reviewed its PPO fee schedules in three years is almost certainly absorbing a wider spread today than when it first signed those contracts — quietly, with no notification from the carrier.</p>
+
+    <h2>How Practices Track and Manage the Spread</h2>
+    <h3>Build a Carrier-by-Carrier Comparison Sheet</h3>
+    <p>Pull your UCR fees for the top 15 codes you bill most frequently. For each code, list the contracted fee from each PPO carrier you participate with. Calculate the percentage spread for every cell. The result is a heat map — codes where the spread is small are profitable PPO procedures; codes where the spread is large are the write-off concentration points.</p>
+    <h3>Identify the Worst-Performing Carrier</h3>
+    <p>Once the comparison sheet exists, the math typically reveals that one or two carriers are responsible for a disproportionate share of total write-offs. That's the renegotiation target — not every contract, just the worst one. Practices that approach Humana, Aetna, or Delta with specific code-level data showing how their schedule compares to peer carriers have far more leverage than practices asking generally for "a fee review."</p>
+    <h3>Monitor the Spread Annually</h3>
+    <p>Carriers update fee schedules in January. Most practices don't notice until they review claim payments months later. Building an annual ritual — pulling the latest contracted rates against current UCR in February of each year — ensures the spread stays visible rather than drifting silently wider.</p>
+
+    <p style="font-size:12px;color:var(--text-muted);margin-top:40px;padding-top:20px;border-top:1px solid var(--rule);font-weight:300"><em>The figures and benchmarks shown are approximate national averages based on publicly available carrier data and practice benchmarking studies. Actual UCR-to-contracted spreads vary significantly by market, practice mix, and carrier. This article is for informational purposes only.</em></p>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-rule"></div>
+    <div class="sidebar-label">Subscribe</div>
+    <div class="sub-mini">
+      <div class="sub-mini-tier">Practice Monitor</div>
+      <div class="sub-mini-price"><sup>$</sup>147</div>
+      <span class="sub-mini-cadence">per month · cancel anytime</span>
+      <div class="sub-mini-rule"></div>
+      <ul class="sub-mini-features">
+        <li>Monthly fee schedule digest</li>
+        <li>6 carriers tracked</li>
+        <li>CDT code impact summaries</li>
+        <li>Renegotiation window alerts</li>
+        <li>Delivered by email</li>
+      </ul>
+      <a href="/#pricing" class="sub-mini-btn">Start Monitoring →</a>
+    </div>
+  </aside>
+</div>
+
+<div class="related">
+  <div class="related-rule"></div>
+  <div class="related-head">Related intelligence</div>
+  <div class="related-grid">
+    <div class="related-card">
+      <span class="related-tag">Practice Strategy</span>
+      <h3><a href="/blog/how-to-negotiate-dental-ppo-fees/">How to Negotiate Dental PPO Fees</a></h3>
+      <p>Step-by-step guide to requesting a fee review and when renegotiation windows open.</p>
+    </div>
+    <div class="related-card">
+      <span class="related-tag">Practice Strategy</span>
+      <h3><a href="/blog/dental-practice-insurance-revenue-leakage/">Dental Practice Insurance Revenue Leakage</a></h3>
+      <p>The five places PPO contracts quietly cost practices money — and how to find them.</p>
+    </div>
+  </div>
+</div>
+
+<section class="final">
+  <div class="final-inner">
+    <div>
+      <div class="final-eyebrow">ClearDentalRates · Subscribe Today</div>
+      <h2>Stop finding out<br/><em>after</em> the fact.</h2>
+      <p class="final-body">Fee schedules change every January. Subscribe and know within 30 days of any change that affects your bottom line.</p>
+    </div>
+    <div class="final-right">
+      <a href="/#pricing" class="btn-primary">View Plans &amp; Subscribe</a>
+      <span class="final-note">No contracts · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+<div class="footer-gold"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">ClearDentalRates</div>
+    <ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/blog.html">Intelligence Library</a></li><li><a href="/#pricing">Subscribe</a></li><li><a href="mailto:hello@cleardentalrates.com">Contact</a></li></ul>
+    <div class="footer-copy">© 2026 ClearDentalRates · Not affiliated with any insurance carrier</div>
+  </div>
+</footer>
+</body>
+</html>
